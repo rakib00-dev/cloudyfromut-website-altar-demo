@@ -4,7 +4,7 @@ export default function Hoe() {
   return (
     <>
       <Navbar />
-      <div className="mt-[80rem]"></div>
+      {/* <div className="mt-[80rem]"></div> */}
     </>
   );
 }

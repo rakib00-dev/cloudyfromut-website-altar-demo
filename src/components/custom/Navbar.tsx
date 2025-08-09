@@ -41,6 +41,8 @@ const Navbar: React.FC = () => {
   const pathname = usePathname();
 
   const [isHovered, setIsHovered] = useState(false);
+  const [isWorkHovered, setIsWorkHovered] = useState(false);
+  const [isServicesHovered, setIsServicesHovered] = useState(false);
   const [isResourceHovered, setIsResourceHovered] = useState(false);
   const [isNavOpen, setIsNavOpen] = useState(false);
 
@@ -132,7 +134,7 @@ const Navbar: React.FC = () => {
         className="mx-auto transition-all bg-white/60 w-full h-20 relative top-0 border-b border-gray-200 z-20"
         ref={navBarFix}
       >
-        <nav className="relative flex justify-between items-center px-6 md:px-12 py-4 max-w-7xl bg-white/60 w-full h-20 m-auto lg:py-2.5">
+        <nav className="relative flex justify-between items-center px-4 md:px-12 py-4 max-w-7xl bg-white/60 w-full h-20 m-auto lg:py-2.5">
           <div className="absolute inset-0 bg-white/40 backdrop-blur-sm -z-10" />
 
           <div className="text-md font-medium w-32 md:w-64 md:text-lg">
@@ -142,13 +144,14 @@ const Navbar: React.FC = () => {
                 alt="logo"
                 width={150}
                 height={39}
+                className="w-32 h-8 md:w-36 md:h-9 "
               />
             </Link>
           </div>
 
           {/* Desktop Menu */}
-          <div className="hidden lg:flex justify-end items-center w-full">
-            <ul className="flex justify-center mx-auto items-center gap-5">
+          <div className="hidden lg:flex justify-end items-center">
+            <ul className="flex justify-end mx-auto items-center gap-5">
               <ListItem
                 navLink="#"
                 onMouseOver={() => setIsHovered(true)}
@@ -175,13 +178,13 @@ const Navbar: React.FC = () => {
                   }
                 />
               </ListItem>
-              <ListItem navLink="/our-work" onClick={scrollToTop}>
+              <ListItem navLink="/pricing" onClick={scrollToTop}>
                 pricing
               </ListItem>
-              <ListItem navLink="/pricing" onClick={scrollToTop}>
+              <ListItem navLink="#" onClick={scrollToTop}>
                 about us
               </ListItem>
-              <ListItem navLink="/pricing" onClick={scrollToTop}>
+              <ListItem navLink="#" onClick={scrollToTop}>
                 careers
               </ListItem>
               <ListItem
@@ -199,12 +202,12 @@ const Navbar: React.FC = () => {
                   }
                 />
               </ListItem>
+              <Button text="book a call" />
             </ul>
-            <Button text="book a call" />
           </div>
 
           {/* Mobile Menu Toggle */}
-          {/* <div className="lg:hidden">
+          <div className="lg:hidden flex justify-center items-center gap-5">
             {!isNavOpen ? (
               <RiMenu3Fill
                 className="text-3xl"
@@ -216,40 +219,93 @@ const Navbar: React.FC = () => {
                 onClick={() => setIsNavOpen(false)}
               />
             )}
-          </div> */}
+          </div>
         </nav>
       </motion.div>
 
       {/* Mobile Menu */}
-      {/* <OutsideClickHandler onOutsideClick={() => setIsNavOpen(false)}>
+      <OutsideClickHandler onOutsideClick={() => setIsNavOpen(false)}>
         {isNavOpen && (
-          <div className="fixed top-20 flex flex-col w-full h-full pl-5 pt-5 gap-10 bg-white overflow-y-auto lg:hidden z-50">
-            <ul className="flex flex-col leading-6">
+          <div className="fixed top-20 flex flex-col w-full pb-10 h-full pl-5 pt-5 gap-10 bg-white overflow-y-auto lg:hidden z-50">
+            <div className="absolute inset-0 bg-white/40 backdrop-blur-sm -z-10" />
+
+            <ul className="flex flex-col leading-6 mr-4 overflow-x-auto mb-10">
               <ListItem
-                navLink="/our-work"
+                className="w-full"
+                navLink=""
+                style={{ justifyContent: 'space-between' }}
                 onClick={() => {
-                  setIsNavOpen(false);
-                  scrollToTop();
+                  setIsWorkHovered((prev) => !prev);
+                  // setIsNavOpen(false);
+                  // scrollToTop();
                 }}
               >
-                our work
+                work
+                <FaChevronDown
+                  style={{ color: 'var(--primary-color)' }}
+                  className={
+                    isWorkHovered
+                      ? 'rotate-180 transition-all'
+                      : 'transition-all'
+                  }
+                />
               </ListItem>
+
               <ListItem
-                navLink="/pricing"
+                className="w-full"
+                navLink=""
+                style={{ justifyContent: 'space-between' }}
                 onClick={() => {
-                  setIsNavOpen(false);
-                  scrollToTop();
+                  setIsServicesHovered((prev) => !prev);
+                  // setIsNavOpen(false);
+                  // scrollToTop();
                 }}
               >
+                services
+                <FaChevronDown
+                  style={{ color: 'var(--primary-color)' }}
+                  className={
+                    isServicesHovered
+                      ? 'rotate-180 transition-all'
+                      : 'transition-all'
+                  }
+                />
+              </ListItem>
+
+              <ListItem navLink="#" onClick={() => setIsNavOpen(false)}>
                 pricing
               </ListItem>
-              <ListItem navLink="/contact" onClick={() => setIsNavOpen(false)}>
-                contact
+              <ListItem navLink="#" onClick={() => setIsNavOpen(false)}>
+                about us
+              </ListItem>
+              <ListItem navLink="#" onClick={() => setIsNavOpen(false)}>
+                careers
+              </ListItem>
+              <ListItem navLink="#" onClick={() => setIsNavOpen(false)}>
+                Tech
+              </ListItem>
+              <ListItem
+                className="w-full"
+                navLink=""
+                style={{ justifyContent: 'space-between' }}
+                onClick={() => {
+                  setIsResourceHovered((prev) => !prev);
+                }}
+              >
+                Resources
+                <FaChevronDown
+                  style={{ color: 'var(--primary-color)' }}
+                  className={
+                    isResourceHovered
+                      ? 'rotate-180 transition-all'
+                      : 'transition-all'
+                  }
+                />
               </ListItem>
             </ul>
           </div>
         )}
-      </OutsideClickHandler> */}
+      </OutsideClickHandler>
     </>
   );
 };

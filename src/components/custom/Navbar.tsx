@@ -14,6 +14,7 @@ import { FaChevronDown } from 'react-icons/fa';
 import { RiCloseFill, RiMenu3Fill } from 'react-icons/ri';
 import OutsideClickHandler from 'react-outside-click-handler';
 import { usePathname } from 'next/navigation';
+import Button from '../common/Button';
 
 interface ListItemProps {
   className?: string;
@@ -199,6 +200,7 @@ const Navbar: React.FC = () => {
                 />
               </ListItem>
             </ul>
+            <Button text="book a call" />
           </div>
 
           {/* Mobile Menu Toggle */}

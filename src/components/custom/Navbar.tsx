@@ -131,7 +131,7 @@ const Navbar: React.FC = () => {
         initial={{ y: -50, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
         transition={{ delay: 0.2, type: 'spring' }}
-        className="mx-auto transition-all bg-white/60 w-full h-20 relative top-0 border-b border-gray-200 z-20"
+        className="mx-auto transition-all bg-white/60 w-full h-20 relative top-0 border-b border-gray-200 z-50"
         ref={navBarFix}
       >
         <nav className="relative flex justify-between items-center px-4 md:px-12 py-4 max-w-7xl bg-white/60 w-full h-20 m-auto lg:py-2.5">
@@ -207,7 +207,7 @@ const Navbar: React.FC = () => {
           </div>
 
           {/* Mobile Menu Toggle */}
-          <div className="lg:hidden flex justify-center items-center gap-5">
+          <div className="lg:hidden relative flex justify-center items-center gap-5">
             {!isNavOpen ? (
               <RiMenu3Fill
                 className="text-3xl"
@@ -225,86 +225,91 @@ const Navbar: React.FC = () => {
 
       {/* Mobile Menu */}
       <OutsideClickHandler onOutsideClick={() => setIsNavOpen(false)}>
-        {isNavOpen && (
-          <div className="fixed top-20 flex flex-col w-full pb-10 h-full pl-5 pt-5 gap-10 bg-white overflow-y-auto lg:hidden z-50">
-            <div className="absolute inset-0 bg-white/40 backdrop-blur-sm -z-10" />
+        {/* {isNavOpen && ( */}
+        <div
+          className={`fixed transition-all duration-300 flex flex-col w-full pb-10 h-full pl-5 md:px-10 pt-5 gap-10 bg-white overflow-y-auto lg:hidden z-20 ${
+            isNavOpen ? 'top-20' : '-top-[200%]'
+          }`}
+        >
+          <div className="absolute inset-0 bg-white/40 backdrop-blur-sm -z-10" />
 
-            <ul className="flex flex-col leading-6 mr-4 overflow-x-auto mb-10">
-              <ListItem
-                className="w-full"
-                navLink=""
-                style={{ justifyContent: 'space-between' }}
-                onClick={() => {
-                  setIsWorkHovered((prev) => !prev);
-                  // setIsNavOpen(false);
-                  // scrollToTop();
-                }}
-              >
-                work
-                <FaChevronDown
-                  style={{ color: 'var(--primary-color)' }}
-                  className={
-                    isWorkHovered
-                      ? 'rotate-180 transition-all'
-                      : 'transition-all'
-                  }
-                />
-              </ListItem>
+          <ul className="flex flex-col leading-6 mr-4 overflow-x-auto mb-10">
+            <ListItem
+              className="w-full"
+              navLink=""
+              style={{ justifyContent: 'space-between' }}
+              onClick={() => {
+                setIsWorkHovered((prev) => !prev);
+                // setIsNavOpen(false);
+                // scrollToTop();
+              }}
+            >
+              work
+              <FaChevronDown
+                style={{ color: 'var(--primary-color)' }}
+                className={
+                  isWorkHovered ? 'rotate-180 transition-all' : 'transition-all'
+                }
+              />
+            </ListItem>
 
-              <ListItem
-                className="w-full"
-                navLink=""
-                style={{ justifyContent: 'space-between' }}
-                onClick={() => {
-                  setIsServicesHovered((prev) => !prev);
-                  // setIsNavOpen(false);
-                  // scrollToTop();
-                }}
-              >
-                services
-                <FaChevronDown
-                  style={{ color: 'var(--primary-color)' }}
-                  className={
-                    isServicesHovered
-                      ? 'rotate-180 transition-all'
-                      : 'transition-all'
-                  }
-                />
-              </ListItem>
+            <ListItem
+              className="w-full"
+              navLink=""
+              style={{ justifyContent: 'space-between' }}
+              onClick={() => {
+                setIsServicesHovered((prev) => !prev);
+                // setIsNavOpen(false);
+                // scrollToTop();
+              }}
+            >
+              services
+              <FaChevronDown
+                style={{ color: 'var(--primary-color)' }}
+                className={
+                  isServicesHovered
+                    ? 'rotate-180 transition-all'
+                    : 'transition-all'
+                }
+              />
+            </ListItem>
 
-              <ListItem navLink="#" onClick={() => setIsNavOpen(false)}>
-                pricing
-              </ListItem>
-              <ListItem navLink="#" onClick={() => setIsNavOpen(false)}>
-                about us
-              </ListItem>
-              <ListItem navLink="#" onClick={() => setIsNavOpen(false)}>
-                careers
-              </ListItem>
-              <ListItem navLink="#" onClick={() => setIsNavOpen(false)}>
-                Tech
-              </ListItem>
-              <ListItem
-                className="w-full"
-                navLink=""
-                style={{ justifyContent: 'space-between' }}
-                onClick={() => {
-                  setIsResourceHovered((prev) => !prev);
-                }}
-              >
-                Resources
-                <FaChevronDown
-                  style={{ color: 'var(--primary-color)' }}
-                  className={
-                    isResourceHovered
-                      ? 'rotate-180 transition-all'
-                      : 'transition-all'
-                  }
-                />
-              </ListItem>
-            </ul>
-          </div>
-        )}
+            <ListItem navLink="#" onClick={() => setIsNavOpen(false)}>
+              pricing
+            </ListItem>
+            <ListItem navLink="#" onClick={() => setIsNavOpen(false)}>
+              about us
+            </ListItem>
+            <ListItem navLink="#" onClick={() => setIsNavOpen(false)}>
+              careers
+            </ListItem>
+            <ListItem navLink="#" onClick={() => setIsNavOpen(false)}>
+              Tech
+            </ListItem>
+            <ListItem
+              className="w-full"
+              navLink=""
+              style={{ justifyContent: 'space-between' }}
+              onClick={() => {
+                setIsResourceHovered((prev) => !prev);
+              }}
+            >
+              Resources
+              <FaChevronDown
+                style={{ color: 'var(--primary-color)' }}
+                className={
+                  isResourceHovered
+                    ? 'rotate-180 transition-all'
+                    : 'transition-all'
+                }
+              />
+            </ListItem>
+            <div className="grid place-items-end">
+              <Button text="book a call" className="grid py-2" />
+            </div>
+          </ul>
+        </div>
+        {/* )} */}
       </OutsideClickHandler>
     </>
   );

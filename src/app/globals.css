@@ -1,8 +1,13 @@
-@import "tailwindcss";
+@import 'tailwindcss';
 
 :root {
+  --color-text: #0f172a;
   --background: #ffffff;
   --foreground: #171717;
+  --primary-color: #e7107e;
+  --secondary-color: #0fa4ea;
+  --color-accent: #f6d200;
+  --title-gray: #767474;
 }
 
 @theme inline {
@@ -16,6 +21,7 @@
   :root {
     --background: #0a0a0a;
     --foreground: #ededed;
+    --link-hover-color: #8a1e41;
   }
 }
 
@@ -24,3 +30,86 @@ body {
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
 }
+
+h1,
+h2 {
+  color: var(--promoblock-text-heading);
+}
+
+h2,
+h3,
+a {
+  font-family: calluna, serif;
+}
+
+.hoverTextAnimation {
+  @apply transition-all duration-300;
+}
+
+.hoverTextAnimation:hover {
+  @apply underline  text-[var(--link-hover-color)];
+}
+
+.linkHover:hover svg,
+.linkHover:hover {
+  @apply translate-x-2.5 text-[var(--link-hover-color)];
+}
+
+/* navbar ⬇️ */
+.menuLinkHover:hover {
+  @apply text-[var(--footer-link)] translate-x-4;
+}
+
+/* .menuLinkHover::after {
+  content: '';
+  @apply flex justify-center items-center h-0.5 transition-all w-[0%] bg-[var(--footer-link)] duration-300;
+}
+
+.menuLinkHover:hover::after {
+} */
+/* navbar ⬆️ */
+
+/* Four complementary - section ⬇️*/
+#card:nth-child(1),
+#card:nth-child(2) {
+  @apply mb-40;
+}
+
+#card:nth-child(3),
+#card:nth-child(4) {
+  @apply mb-40 md:mb-0;
+}
+
+#fourLink h2::after {
+  content: '';
+  @apply transition-all duration-300 flex justify-center items-center h-[2px] w-[0%] bg-[var(--link-hover-color)];
+}
+
+#fourLink h2:hover::after {
+  @apply w-[100%];
+}
+
+#fourLink h2:hover {
+  @apply text-[var(--link-hover-color)];
+}
+/* Four complementary - section ⬆️*/
+
+/* footer section ⬇️ */
+.linkAnimation {
+  @apply transition-all duration-300;
+}
+
+.linkAnimation::after {
+  content: '';
+  @apply flex justify-center items-center h-0.5 transition-all w-[0%] bg-[var(--footer-link)] duration-300;
+}
+
+.linkAnimation:hover::after {
+  @apply w-[100%];
+}
+
+.linkAnimation:hover {
+  @apply text-[var(--footer-link)];
+}
+
+/* footer section ⬆️ */

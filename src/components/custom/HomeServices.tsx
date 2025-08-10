@@ -1,6 +1,7 @@
 import React from 'react';
 import SideTextContent from '../common/SideTextContent';
 import Image from 'next/image';
+import Link from 'next/link';
 
 const HomeServices = () => {
   const homeServicesCards = [
@@ -54,7 +55,8 @@ const HomeServices = () => {
         />
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 w-full order-2">
           {homeServicesCards.map((card, index) => (
-            <div
+            <Link
+              href={''}
               key={index}
               className="bg-white rounded-xl w-full md:w-[23.2rem] md:h-80 shadow-2xl p-6 flex flex-col "
             >
@@ -63,7 +65,7 @@ const HomeServices = () => {
               </div>
               <h3 className="text-2xl mb-2 font-semibold">{card.title}</h3>
               <p className="text-md text-gray-600">{card.p}</p>
-            </div>
+            </Link>
           ))}
         </div>
       </div>

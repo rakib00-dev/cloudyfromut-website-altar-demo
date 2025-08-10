@@ -14,11 +14,13 @@ interface CommonSeedCompoTypes {
   textOrder?: string;
   imgWidth?: number;
   imgHeight?: number;
+  id?: string;
 }
 
 const CommonSeedCompo = ({
   src,
   h2,
+  id,
   p,
   wantImage,
   children,
@@ -35,6 +37,7 @@ const CommonSeedCompo = ({
       style={style}
     >
       <div
+        id={id}
         className={`w-full md:h-[418px] px-6 grid place-items-center grid-cols-1 md:px-12 py-10 md:py-30 md:grid-cols-2 gap-5 ${className}`}
       >
         <SideTextContent h2={h2} p={p} order={textOrder}>

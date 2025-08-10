@@ -47,6 +47,10 @@
   --sidebar-ring: oklch(0.708 0 0);
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 body {
   background: var(--primary-background);
   font-family: 'Poppins', sans-serif;

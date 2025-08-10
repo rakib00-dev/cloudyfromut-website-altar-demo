@@ -1,5 +1,7 @@
+import CostCards from '@/components/custom/CostCards';
 import Hero from '@/components/custom/Hero';
 import Navbar from '@/components/custom/Navbar';
+import RecentExamples from '@/components/custom/RecentExamples';
 import Image from 'next/image';
 
 export default function Hoe() {
@@ -7,6 +9,17 @@ export default function Hoe() {
     <>
       <Navbar />
       <Hero />
+      <ImageAndBgEffeect /> {/* effect */}
+      <RecentExamples />
+      <CostCards />
+      <div className="mt-[80rem]"></div>
+    </>
+  );
+}
+
+function ImageAndBgEffeect() {
+  return (
+    <>
       <Image
         src={'/images/hero/bg-prop-2-right.svg'}
         alt="hero bg"
@@ -20,7 +33,6 @@ export default function Hoe() {
           backgroundColor: 'var(--secondary-background)',
         }}
       ></div>
-      {/* <div className="mt-[80rem]"></div> */}
     </>
   );
 }

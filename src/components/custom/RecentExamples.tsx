@@ -1,5 +1,6 @@
 import Image from 'next/image';
 import React from 'react';
+import SecondaryHeader from '../common/SecondaryHeader';
 
 const RecentExamples = () => {
   return (
@@ -9,10 +10,10 @@ const RecentExamples = () => {
         backgroundColor: 'var(--secondary-background)',
       }}
     >
-      <div className="w-full px-6 grid md:px-12 py-20 md:py-30 md:grid-cols-2 ">
-        <div className="flex flex-col justify-center items-start gap-5 order-2 md:order-1">
-          <h2 className="text-2xl md:text-5xl font-bold">Recent Examples</h2>
-          <p>
+      <div className="w-full md:h-[418px] px-6 grid grid-cols-1 md:px-12 py-10 md:py-30 md:grid-cols-2 gap-5">
+        <div className="flex h-fit flex-col justify-center items-start gap-2 md:gap-5 order-2">
+          <SecondaryHeader>Recent Examples</SecondaryHeader>
+          <p className="h-fit">
             Here are some examples of projects we worked on over the last few
             months. This will help you understand how pricing can vary depending
             on factors like size and complexity.
@@ -24,7 +25,7 @@ const RecentExamples = () => {
           alt="recent examples pricing laptop image"
           width={500}
           height={500}
-          className="order-1 md:order-2 absolute top-0 -right-6/12 z-40"
+          className="order-1 md:order-2 md:absolute top-0 md:-right-6/12 z-40"
           style={{ width: '100%', height: '100%' }}
         />
       </div>

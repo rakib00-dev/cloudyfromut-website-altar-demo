@@ -84,7 +84,7 @@ const Navbar: React.FC = () => {
           className={
             smallClassName
               ? smallClassName
-              : `flex justify-center items-center gap-1 relative text-xl  text-gray-700 font-bold cursor-pointer transition-all duration-300 capitalize  lg:text-sm hover:text-gray-500  ${
+              : `flex justify-center items-center gap-1 relative text-xl  text-gray-700 font-bold cursor-pointer transition-all duration-100 capitalize  lg:text-sm hover:text-gray-500  ${
                   isActive ? 'text-blue-500' : ''
                 } ${className || ''}`
           }
@@ -154,27 +154,31 @@ const Navbar: React.FC = () => {
             <ul className="flex justify-end mx-auto items-center gap-5">
               <ListItem
                 navLink="#"
-                onMouseOver={() => setIsHovered(true)}
-                onMouseOut={() => setIsHovered(false)}
+                onMouseOver={() => setIsWorkHovered(true)}
+                onMouseOut={() => setIsWorkHovered(false)}
               >
                 work{' '}
                 <FaChevronDown
                   style={{ color: 'var(--primary-color)' }}
                   className={
-                    isHovered ? 'rotate-180 transition-all' : 'transition-all'
+                    isWorkHovered
+                      ? 'rotate-180 transition-all'
+                      : 'transition-all'
                   }
                 />
               </ListItem>
               <ListItem
                 navLink="#"
-                onMouseOver={() => setIsHovered(true)}
-                onMouseOut={() => setIsHovered(false)}
+                onMouseOver={() => setIsServicesHovered(true)}
+                onMouseOut={() => setIsServicesHovered(false)}
               >
-                solutions{' '}
+                services{' '}
                 <FaChevronDown
                   style={{ color: 'var(--primary-color)' }}
                   className={
-                    isHovered ? 'rotate-180 transition-all' : 'transition-all'
+                    isServicesHovered
+                      ? 'rotate-180 transition-all'
+                      : 'transition-all'
                   }
                 />
               </ListItem>

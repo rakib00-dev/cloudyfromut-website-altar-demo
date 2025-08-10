@@ -44,7 +44,7 @@ const HomeServices = () => {
         backgroundColor: 'var(--secondary-background)',
       }}
     >
-      <div className="w-full grid gap-5 px-6 md:px-12 py-20 md:py-30 md:pt-50">
+      <div className="w-full grid gap-5 px-6 md:px-12 py-20 md:py-30">
         <SideTextContent
           h2="Our Services Have a Proven Structured Process"
           p="Building great products needs deep business insight, and a very structured process, that’s why we’re driven by process."
@@ -56,7 +56,7 @@ const HomeServices = () => {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 w-full order-2">
           {homeServicesCards.map((card, index) => (
             <Link
-              href={''}
+              href={'#'}
               key={index}
               className="bg-white rounded-xl w-full md:w-[23.2rem] md:h-80 shadow-2xl p-6 flex flex-col "
             >

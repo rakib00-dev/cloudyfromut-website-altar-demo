@@ -21,7 +21,7 @@ export default function Hero() {
 
   return (
     <section className="relative max-w-7xl mx-auto w-full overflow-hidden">
-      <div className="w-full px-6 md:px-12 grid gap-5 py-20 md:py-30">
+      <div className="w-full px-6 md:px-12 grid gap-5 py-20 md:py-30 md:mb-20">
         <h1 className="text-5xl md:text-6xl font-extrabold py-4 w-full md:w-[45rem] mx-auto md:text-start">
           Pick your type of project.
         </h1>

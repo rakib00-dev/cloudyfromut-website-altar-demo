@@ -65,7 +65,7 @@ const CostCards = () => {
         backgroundColor: 'var(--secondary-background)',
       }}
     >
-      <div className="w-full px-6 grid md:px-12 py-20 md:py-30 ">
+      <div className="w-full px-6 grid md:px-12 py-20 md:py-30 md:pt-50">
         <div className="grid md:grid-cols-3 gap-6 w-full">
           {costCardsArr.map((card, index) => (
             <div

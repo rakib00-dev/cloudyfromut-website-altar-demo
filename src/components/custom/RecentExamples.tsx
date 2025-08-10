@@ -1,6 +1,6 @@
 import Image from 'next/image';
 import React from 'react';
-import SecondaryHeader from '../common/SecondaryHeader';
+import SideTextContent from '../common/SideTextContent';
 
 const RecentExamples = () => {
   return (
@@ -11,14 +11,12 @@ const RecentExamples = () => {
       }}
     >
       <div className="w-full md:h-[418px] px-6 grid grid-cols-1 md:px-12 py-10 md:py-30 md:grid-cols-2 gap-5">
-        <div className="flex h-fit flex-col justify-center items-start gap-2 md:gap-5 order-2">
-          <SecondaryHeader>Recent Examples</SecondaryHeader>
-          <p className="h-fit">
-            Here are some examples of projects we worked on over the last few
+        <SideTextContent
+          h2="Recent Examples"
+          p="Here are some examples of projects we worked on over the last few
             months. This will help you understand how pricing can vary depending
-            on factors like size and complexity.
-          </p>
-        </div>
+            on factors like size and complexity."
+        ></SideTextContent>
 
         <Image
           src={'/images/recent-examples/pricing1.png.webp'}

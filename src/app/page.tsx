@@ -1,4 +1,3 @@
-import CommonSeedCompo from '@/components/common/CommonSeedCompo';
 import CostCards from '@/components/custom/CostCards';
 import GetOurPricing from '@/components/custom/GetOurPricing';
 import Hero from '@/components/custom/Hero';

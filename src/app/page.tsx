@@ -15,7 +15,7 @@ export default function Hoe() {
         className="absolute top-0 right-0 -z-10 hidden md:block"
       />
       <div
-        className="w-full absolute -z-20 py-60 -translate-y-65"
+        className="w-full absolute -z-20 py-60 -translate-y-30 md:-translate-y-65"
         style={{
           backgroundColor: 'var(--secondary-background)',
         }}

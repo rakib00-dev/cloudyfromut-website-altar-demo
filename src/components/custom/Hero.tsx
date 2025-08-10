@@ -38,7 +38,7 @@ export default function Hero() {
                 <GoTriangleDown className="fill-blue-500 " />
               </Button>
             </DropdownMenuTrigger>
-            <DropdownMenuContent className="w-70">
+            <DropdownMenuContent className="w-70 md:min-w-3xl">
               <DropdownMenuLabel>Panel Position</DropdownMenuLabel>
               <DropdownMenuSeparator />
               <DropdownMenuRadioGroup

@@ -2,6 +2,7 @@ import CommonSeedCompo from '@/components/common/CommonSeedCompo';
 import CostCards from '@/components/custom/CostCards';
 import GetOurPricing from '@/components/custom/GetOurPricing';
 import Hero from '@/components/custom/Hero';
+import HomeServices from '@/components/custom/HomeServices';
 import Navbar from '@/components/custom/Navbar';
 import RecentExamples from '@/components/custom/RecentExamples';
 import SeedModules from '@/components/custom/SeedModules';
@@ -20,6 +21,7 @@ export default function Hoe() {
       <GetOurPricing />
       <SeedProject />
       <SeedModules />
+      <HomeServices />
       <div className="mt-[80rem]"></div>
     </>
   );

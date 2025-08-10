@@ -5,12 +5,14 @@ interface SideTextContentTypes {
   h2: string;
   p: string;
   order?: string;
+  children?: string;
 }
 
 const SideTextContent = ({
   h2,
   p,
   order = 'order-2',
+  children,
 }: SideTextContentTypes) => {
   return (
     <div
@@ -18,6 +20,7 @@ const SideTextContent = ({
     >
       <h2 className=" text-4xl md:text-5xl font-bold">{h2}</h2>
       <p className="h-fit">{p}</p>
+      {children}
     </div>
   );
 };

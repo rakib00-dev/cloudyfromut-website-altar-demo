@@ -1,5 +1,6 @@
 import CommonSeedCompo from '@/components/common/CommonSeedCompo';
 import CostCards from '@/components/custom/CostCards';
+import GetOurPricing from '@/components/custom/GetOurPricing';
 import Hero from '@/components/custom/Hero';
 import Navbar from '@/components/custom/Navbar';
 import RecentExamples from '@/components/custom/RecentExamples';
@@ -13,11 +14,8 @@ export default function Hoe() {
       <ImageAndBgEffeect /> {/* effect */}
       <RecentExamples />
       <CostCards />
-      <CommonSeedCompo
-        h2="How We Get to Our Pricing"
-        p="Our pricing is reflected by our lean, user-centric approach to product innovation and software development. This, combined with top industry talent, means our small focused teams deliver projects on time and on budget."
-        wantImage
-      />
+      {/* Get to our pricing ⬇️ */}
+      <GetOurPricing />
       <div className="mt-[80rem]"></div>
     </>
   );

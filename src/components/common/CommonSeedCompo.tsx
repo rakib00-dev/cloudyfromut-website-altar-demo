@@ -6,9 +6,18 @@ interface CommonSeedCompoTypes {
   h2: string;
   p: string;
   wantImage?: boolean;
+  children?: any;
+  className?: string;
 }
 
-const CommonSeedCompo = ({ src, h2, p, wantImage }: CommonSeedCompoTypes) => {
+const CommonSeedCompo = ({
+  src,
+  h2,
+  p,
+  wantImage,
+  children,
+  className,
+}: CommonSeedCompoTypes) => {
   return (
     <section
       className="relative max-w-7xl mx-auto w-full overflow-hidden"
@@ -16,8 +25,12 @@ const CommonSeedCompo = ({ src, h2, p, wantImage }: CommonSeedCompoTypes) => {
         backgroundColor: 'var(--secondary-background)',
       }}
     >
-      <div className="w-full md:h-[418px] px-6 grid grid-cols-1 md:px-12 py-10 md:py-30 md:grid-cols-2 gap-5">
-        <SideTextContent h2={h2} p={p}></SideTextContent>
+      <div
+        className={`w-full md:h-[418px] px-6 grid grid-cols-1 md:px-12 py-10 md:py-30 md:grid-cols-2 gap-5 ${className}`}
+      >
+        <SideTextContent h2={h2} p={p}>
+          {children}
+        </SideTextContent>
         {wantImage && (
           <Image
             src={'/images/seed-group/bg-prop-4-left.svg'}

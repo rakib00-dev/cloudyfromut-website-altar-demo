@@ -13,9 +13,9 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: 'Rothschild & Co',
+  title: 'Custom Product & Software Development Pricing',
   description:
-    'Rothschild & Co is one of the world’s largest independent financial advisory groups, employing 4,200 people in over 40 countries across the world, delivering a unique global perspective across four market-leading business divisions; Global Advisory, Asset Management, Wealth Management and Merchant Banking.',
+    'A break down of our Pricing at Altar.io – with tangible examples by vertical, project size, timeframe and complexity',
   keywords:
     'Global Advisory,Wealth Management,Asset Management,Trusts,Private Wealth,Private Banking,Merchant Banking',
 };

@@ -1,6 +1,7 @@
 import React from 'react';
 import SideTextContent from './SideTextContent';
 import Image from 'next/image';
+
 interface CommonSeedCompoTypes {
   src?: string;
   h2: string;
@@ -8,6 +9,11 @@ interface CommonSeedCompoTypes {
   wantImage?: boolean;
   children?: any;
   className?: string;
+  style?: object;
+  imgOrder?: string;
+  textOrder?: string;
+  imgWidth?: number;
+  imgHeight?: number;
 }
 
 const CommonSeedCompo = ({
@@ -17,20 +23,24 @@ const CommonSeedCompo = ({
   wantImage,
   children,
   className,
+  style,
+  imgOrder,
+  textOrder,
+  imgWidth = 350,
+  imgHeight = 350,
 }: CommonSeedCompoTypes) => {
   return (
     <section
       className="relative max-w-7xl mx-auto w-full overflow-hidden"
-      style={{
-        backgroundColor: 'var(--secondary-background)',
-      }}
+      style={style}
     >
       <div
-        className={`w-full md:h-[418px] px-6 grid grid-cols-1 md:px-12 py-10 md:py-30 md:grid-cols-2 gap-5 ${className}`}
+        className={`w-full md:h-[418px] px-6 grid place-items-center grid-cols-1 md:px-12 py-10 md:py-30 md:grid-cols-2 gap-5 ${className}`}
       >
-        <SideTextContent h2={h2} p={p}>
+        <SideTextContent h2={h2} p={p} order={textOrder}>
           {children}
         </SideTextContent>
+
         {wantImage && (
           <Image
             src={'/images/seed-group/bg-prop-4-left.svg'}
@@ -44,11 +54,10 @@ const CommonSeedCompo = ({
         {src && (
           <Image
             src={src}
-            alt="recent examples pricing laptop image"
-            width={500}
-            height={500}
-            className="order-1 md:order-2 top-0 md:-right-6/12 z-40"
-            style={{ width: '100%', height: '100%' }}
+            alt="recent examples pricing seed image"
+            width={imgWidth}
+            height={imgHeight}
+            className={imgOrder}
           />
         )}
       </div>

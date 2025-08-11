@@ -1,5 +1,6 @@
 import CallToAction from '@/components/custom/CallToAction';
 import CostCards from '@/components/custom/CostCards';
+import Footer from '@/components/custom/Footer';
 import GetOurPricing from '@/components/custom/GetOurPricing';
 import Hero from '@/components/custom/Hero';
 import HomeServices from '@/components/custom/HomeServices';
@@ -25,7 +26,8 @@ export default function Hoe() {
       <HomeServices />
       <Testimonial />
       <CallToAction />
-      <div className="mt-[80rem]"></div>
+      <Footer />
+      {/* <div className="mt-[80rem]"></div> */}
     </>
   );
 }

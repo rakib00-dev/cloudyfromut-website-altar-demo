@@ -127,10 +127,10 @@ const Navbar: React.FC = () => {
 
   return (
     <>
-      <motion.div
-        initial={{ y: -50, opacity: 0 }}
-        animate={{ y: 0, opacity: 1 }}
-        transition={{ delay: 0.2, type: 'spring' }}
+      <div
+        // initial={{ y: -50, opacity: 0 }}
+        // animate={{ y: 0, opacity: 1 }}
+        // transition={{ delay: 0.2, type: 'spring' }}
         className="mx-auto transition-all bg-white/60 w-full h-20 relative top-0 border-b border-gray-200 z-50"
         ref={navBarFix}
       >
@@ -225,7 +225,7 @@ const Navbar: React.FC = () => {
             )}
           </div>
         </nav>
-      </motion.div>
+      </div>
 
       {/* Mobile Menu */}
       <OutsideClickHandler onOutsideClick={() => setIsNavOpen(false)}>

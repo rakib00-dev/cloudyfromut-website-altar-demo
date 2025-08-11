@@ -6,6 +6,7 @@ import Navbar from '@/components/custom/Navbar';
 import RecentExamples from '@/components/custom/RecentExamples';
 import SeedModules from '@/components/custom/SeedModules';
 import SeedProject from '@/components/custom/SeedProject';
+import Testimonial from '@/components/custom/Testimonial';
 import Image from 'next/image';
 
 export default function Hoe() {
@@ -21,6 +22,7 @@ export default function Hoe() {
       <SeedProject />
       <SeedModules />
       <HomeServices />
+      <Testimonial />
       <div className="mt-[80rem]"></div>
     </>
   );

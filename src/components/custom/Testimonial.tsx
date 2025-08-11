@@ -40,7 +40,7 @@ const Testimonial = () => {
         </div>
       </div>
       <div
-        className={`relative w-full -top-20 md:px-12 grid place-items-center mb-10 md:mb-30`}
+        className={`relative w-full -top-20 md:px-12 grid place-items-center `}
       >
         <div
           style={{ background: 'var(--testimonial-bg' }}

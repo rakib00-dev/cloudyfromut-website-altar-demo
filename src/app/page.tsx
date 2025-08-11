@@ -1,3 +1,4 @@
+import CallToAction from '@/components/custom/CallToAction';
 import CostCards from '@/components/custom/CostCards';
 import GetOurPricing from '@/components/custom/GetOurPricing';
 import Hero from '@/components/custom/Hero';
@@ -23,6 +24,7 @@ export default function Hoe() {
       <SeedModules />
       <HomeServices />
       <Testimonial />
+      <CallToAction />
       <div className="mt-[80rem]"></div>
     </>
   );

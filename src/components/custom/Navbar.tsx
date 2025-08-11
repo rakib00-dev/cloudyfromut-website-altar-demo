@@ -140,7 +140,7 @@ const Navbar: React.FC = () => {
           <div className="text-md font-medium w-32 md:w-64 md:text-lg">
             <Link href="/" className="flex items-center" onClick={scrollToTop}>
               <Image
-                src="./images/navbar/altar-logo.svg"
+                src="./images/navbar/altar-logo_dark.svg"
                 alt="logo"
                 width={150}
                 height={39}

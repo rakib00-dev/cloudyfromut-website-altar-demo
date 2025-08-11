@@ -1,6 +1,5 @@
 'use client';
 
-import { motion } from 'framer-motion';
 import Link from 'next/link';
 import Image from 'next/image';
 import React, {
@@ -25,12 +24,14 @@ interface ListItemProps {
   children: ReactNode;
   onClick?: () => void;
   style?: CSSProperties;
+  notLink?: boolean;
 }
 
 interface DropDownProps {
-  title?: string;
-  src?: string;
-  to: string;
+  title: string;
+  p: string;
+  src: string;
+  to?: string;
   className?: string;
   imgClassName?: string;
 }
@@ -45,6 +46,20 @@ const Navbar: React.FC = () => {
   const [isServicesHovered, setIsServicesHovered] = useState(false);
   const [isResourceHovered, setIsResourceHovered] = useState(false);
   const [isNavOpen, setIsNavOpen] = useState(false);
+  const navSubWorkArr = [
+    {
+      title: 'Case Studies',
+      p: 'A peek behind the curtain at how we take digital experiences to the next level.',
+      to: '',
+      src: '/images/nav-work/svg-image-5.svg',
+    },
+    {
+      title: 'Testimonials',
+      p: 'Hear from the entrepreneurs we’ve worked with and see how we’ve helped bring over 100 products to life.',
+      top: '',
+      src: '/images/nav-work/svg-image-6.svg',
+    },
+  ];
 
   const navBarFix = useRef<HTMLDivElement>(null);
 
@@ -70,33 +85,53 @@ const Navbar: React.FC = () => {
     onMouseOut,
     children,
     onClick,
+    notLink,
     style,
   }) => {
     const isActive = pathname === navLink;
     return (
       <li className="pb-5 lg:pb-0 flex">
-        <Link
-          href={navLink}
-          style={style}
-          onMouseOver={onMouseOver}
-          onMouseOut={onMouseOut}
-          onClick={onClick}
-          className={
-            smallClassName
-              ? smallClassName
-              : `flex justify-center items-center gap-1 relative text-xl  text-gray-700 font-bold cursor-pointer transition-all duration-100 capitalize  lg:text-sm hover:text-gray-500  ${
-                  isActive ? 'text-blue-500' : ''
-                } ${className || ''}`
-          }
-        >
-          {children}
-        </Link>
+        {notLink ? (
+          <span
+            style={style}
+            onMouseOver={onMouseOver}
+            onMouseOut={onMouseOut}
+            onClick={onClick}
+            className={
+              smallClassName
+                ? smallClassName
+                : `flex justify-center items-center gap-1 relative text-xl  text-gray-700 font-bold cursor-pointer transition-all duration-100 capitalize  lg:text-sm hover:text-gray-500  ${
+                    isActive ? 'text-blue-500' : ''
+                  } ${className || ''}`
+            }
+          >
+            {children}
+          </span>
+        ) : (
+          <Link
+            href={navLink}
+            style={style}
+            onMouseOver={onMouseOver}
+            onMouseOut={onMouseOut}
+            onClick={onClick}
+            className={
+              smallClassName
+                ? smallClassName
+                : `flex justify-center items-center gap-1 relative text-xl  text-gray-700 font-bold cursor-pointer transition-all duration-100 capitalize  lg:text-sm hover:text-gray-500  ${
+                    isActive ? 'text-blue-500' : ''
+                  } ${className || ''}`
+            }
+          >
+            {children}
+          </Link>
+        )}
       </li>
     );
   };
 
   const DropDown: React.FC<DropDownProps> = ({
-    title = 'web design',
+    title,
+    p,
     src,
     to = '#',
     className,
@@ -106,21 +141,24 @@ const Navbar: React.FC = () => {
     return (
       <Link
         href={to}
-        className={`flex gap-2 p-4 justify-start items-center w-full rounded-md ${
-          isActive ? 'DropItemActive' : 'DropItemHover'
-        } ${className || ''} ${src ? '' : 'pl-10 py-6 underline'}`}
+        className={`relative flex gap-1 justify-start items-center w-xs rounded-md z-30 ${
+          className || ''
+        }`}
         onClick={() => setIsNavOpen(false)}
       >
         {src && (
           <Image
             src={src}
-            alt={title}
-            width={44}
-            height={44}
-            className={`p-3 rounded bg-gray-100/80 ${imgClassName || ''}`}
+            alt={title || ''}
+            width={65}
+            height={65}
+            className={`p-3 rounded ${imgClassName}`}
           />
         )}
-        <h5 className="capitalize text-sm w-fit font-bold">{title}</h5>
+        <div className="grid w-full">
+          <h5 className="capitalize text-2xl font-bold w-full">{title}</h5>
+          <p>{p}</p>
+        </div>
       </Link>
     );
   };
@@ -140,7 +178,7 @@ const Navbar: React.FC = () => {
           <div className="text-md font-medium w-32 md:w-64 md:text-lg">
             <Link href="/" className="flex items-center" onClick={scrollToTop}>
               <Image
-                src="./images/navbar/altar-logo_dark.svg"
+                src="/images/navbar/altar-logo_dark.svg"
                 alt="logo"
                 width={150}
                 height={39}
@@ -156,6 +194,7 @@ const Navbar: React.FC = () => {
                 navLink="#"
                 onMouseOver={() => setIsWorkHovered(true)}
                 onMouseOut={() => setIsWorkHovered(false)}
+                notLink
               >
                 work{' '}
                 <FaChevronDown
@@ -166,6 +205,14 @@ const Navbar: React.FC = () => {
                       : 'transition-all'
                   }
                 />
+                {/* {isWorkHovered && */}
+                {
+                  <div className="absolute top-40 flex items-start bg-white rounded-2xl px-2 py-4 flex-1 shadow-2xl ">
+                    {navSubWorkArr.map(({ title, p, src, to }, idx) => (
+                      <DropDown to={to} src={src} title={title} p={p} />
+                    ))}
+                  </div>
+                }
               </ListItem>
               <ListItem
                 navLink="#"

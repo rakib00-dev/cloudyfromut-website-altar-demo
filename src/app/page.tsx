@@ -40,7 +40,7 @@ function ImageAndBgEffeect() {
         alt="hero bg"
         width={400}
         height={400}
-        className="absolute top-0 right-0 -z-10 hidden md:block"
+        className="absolute top-0 right-0 -z-10 hidden md:block w-auto h-auto"
       />
       <div
         className="w-full h-[90rem] absolute -z-20 py-60 -translate-y-30 md:-translate-y-65"

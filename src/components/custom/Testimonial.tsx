@@ -60,7 +60,7 @@ const Testimonial = () => {
           <img
             src="/images/testimonial/bg-prop-5-right.svg"
             alt=""
-            className="absolute"
+            className="absolute "
           />
           <img
             src="/images/testimonial/bg-prop-5-right.svg"
@@ -73,6 +73,7 @@ const Testimonial = () => {
             className="absolute left-0"
           />
         </div>
+        <div className="bg-[var(--cta-bg)] h-34 w-full absolute -bottom-30"></div>
       </div>
     </section>
   );

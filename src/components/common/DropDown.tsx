@@ -41,7 +41,7 @@ const DropDown: React.FC<DropDownProps> = ({
         className={`p-3 group-hover:invert group-hover:brightness-0 rounded ${imgClassName}`}
       />
       <div className="grid text-left w-full group-hover:*:text-white">
-        <h5 className="capitalize text-2xl font-bold w-full">{title}</h5>
+        <h5 className="capitalize text-xl font-bold w-full">{title}</h5>
         <p className="font-medium">{p}</p>
       </div>
     </Link>

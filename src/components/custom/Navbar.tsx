@@ -8,6 +8,7 @@ import React, {
   useState,
   CSSProperties,
   ReactNode,
+  Suspense,
 } from 'react';
 import { FaChevronDown } from 'react-icons/fa';
 import { RiCloseFill, RiMenu3Fill } from 'react-icons/ri';
@@ -15,13 +16,14 @@ import OutsideClickHandler from 'react-outside-click-handler';
 import Button from '../common/Button';
 import DropDowns from '../common/DropDowns';
 import ListItem from '../common/ListItem';
+import Loading from '../common/Loading';
 
 const Navbar: React.FC = () => {
   const scrollToTop = () => window.scrollTo(0, 0);
 
   const [isHovered, setIsHovered] = useState(false);
   const [isWorkHovered, setIsWorkHovered] = useState(false);
-  const [isServicesHovered, setIsServicesHovered] = useState(false);
+  const [isServicesHovered, setIsServicesHovered] = useState(true);
   const [isResourceHovered, setIsResourceHovered] = useState(false);
   const [isNavOpen, setIsNavOpen] = useState(false);
   const navSubWorkArr = [
@@ -75,6 +77,21 @@ const Navbar: React.FC = () => {
       p: 'Build your product with a dedicated team of developers.',
       to: '/dedicated-teams',
       src: '/images/home-services/svg-image-19.svg',
+    },
+  ];
+
+  const navSubResourcesArr = [
+    {
+      title: 'Blog',
+      p: 'Startup advice to building high-quality products — distilled from years of experience to guide your journey.',
+      to: '/blog',
+      src: '/images/nav-resources/svg-image-13.svg',
+    },
+    {
+      title: 'Podcast',
+      p: 'Top founders and experts unpack the early startup journey — from building the product to finding product-market fit.',
+      to: '/podcast',
+      src: '/images/nav-resources/svg-image-14.svg',
     },
   ];
 
@@ -134,10 +151,12 @@ const Navbar: React.FC = () => {
                   }
                 />
                 {isWorkHovered && (
-                  <DropDowns
-                    subMenuArr={navSubWorkArr}
-                    setIsNavOpen={setIsNavOpen}
-                  />
+                  <Suspense fallback={<Loading />}>
+                    <DropDowns
+                      subMenuArr={navSubWorkArr}
+                      setIsNavOpen={setIsNavOpen}
+                    />
+                  </Suspense>
                 )}
               </ListItem>
               <ListItem
@@ -156,10 +175,12 @@ const Navbar: React.FC = () => {
                   }
                 />
                 {isServicesHovered && (
-                  <DropDowns
-                    subMenuArr={navSubServicesArr}
-                    setIsNavOpen={setIsNavOpen}
-                  />
+                  <Suspense fallback={<Loading />}>
+                    <DropDowns
+                      subMenuArr={navSubServicesArr}
+                      setIsNavOpen={setIsNavOpen}
+                    />
+                  </Suspense>
                 )}
               </ListItem>
               <ListItem navLink="/pricing" onClick={scrollToTop}>
@@ -175,6 +196,7 @@ const Navbar: React.FC = () => {
                 navLink="#"
                 onMouseOver={() => setIsResourceHovered(true)}
                 onMouseOut={() => setIsResourceHovered(false)}
+                notLink
               >
                 resources
                 <FaChevronDown
@@ -185,6 +207,15 @@ const Navbar: React.FC = () => {
                       : 'transition-all'
                   }
                 />
+                {isResourceHovered && (
+                  <Suspense fallback={<Loading />}>
+                    <DropDowns
+                      subMenuArr={navSubResourcesArr}
+                      setIsNavOpen={setIsNavOpen}
+                      className="mr-35"
+                    />
+                  </Suspense>
+                )}
               </ListItem>
               <Button text="book a call" />
             </ul>

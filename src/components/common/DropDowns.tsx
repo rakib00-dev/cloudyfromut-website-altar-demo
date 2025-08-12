@@ -15,6 +15,7 @@ const DropDowns = ({ subMenuArr, setIsNavOpen }: DropDownsTypes) => {
           title={title}
           p={p}
           setIsNavOpen={setIsNavOpen}
+          key={idx}
         />
       ))}
     </div>

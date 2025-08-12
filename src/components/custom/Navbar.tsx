@@ -12,26 +12,12 @@ import React, {
 import { FaChevronDown } from 'react-icons/fa';
 import { RiCloseFill, RiMenu3Fill } from 'react-icons/ri';
 import OutsideClickHandler from 'react-outside-click-handler';
-import { usePathname } from 'next/navigation';
 import Button from '../common/Button';
 import DropDowns from '../common/DropDowns';
-
-interface ListItemProps {
-  className?: string;
-  smallClassName?: string;
-  navLink: string;
-  onMouseOver?: () => void;
-  onMouseOut?: () => void;
-  children: ReactNode;
-  onClick?: () => void;
-  style?: CSSProperties;
-  notLink?: boolean;
-}
+import ListItem from '../common/ListItem';
 
 const Navbar: React.FC = () => {
   const scrollToTop = () => window.scrollTo(0, 0);
-
-  const pathname = usePathname();
 
   const [isHovered, setIsHovered] = useState(false);
   const [isWorkHovered, setIsWorkHovered] = useState(false);
@@ -53,6 +39,45 @@ const Navbar: React.FC = () => {
     },
   ];
 
+  const navSubServicesArr = [
+    {
+      title: 'Product Scope',
+      p: '15-day process to align the product with your business goals.',
+      to: '/product-scope',
+      src: '/images/home-services/svg-image-14.svg',
+    },
+    {
+      title: 'AI Development & Enablement',
+      p: 'We leverage ML and Generative AI strategically to ensure your business is future-ready',
+      to: '/ai-development-&-enablement',
+      src: '/images/home-services/svg-image-15.svg',
+    },
+    {
+      title: 'MVP Builder',
+      p: 'Go to market quickly with a high-quality Minimum Viable Product.',
+      to: '/mvp-builder',
+      src: '/images/home-services/svg-image-16.svg',
+    },
+    {
+      title: 'Custom Software Development',
+      p: 'Lean frameworks applied to your vision to create an innovative custom software solution',
+      to: '/custom-software-development',
+      src: '/images/home-services/svg-image-17.svg',
+    },
+    {
+      title: 'UX / UI',
+      p: 'Design an easy-to-use engaging and functional product.',
+      to: '/ux-/-ui',
+      src: '/images/home-services/svg-image-18.svg',
+    },
+    {
+      title: 'Dedicated Teams',
+      p: 'Build your product with a dedicated team of developers.',
+      to: '/dedicated-teams',
+      src: '/images/home-services/svg-image-19.svg',
+    },
+  ];
+
   const navBarFix = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -69,65 +94,10 @@ const Navbar: React.FC = () => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  const ListItem: React.FC<ListItemProps> = ({
-    className,
-    smallClassName,
-    navLink,
-    onMouseOver,
-    onMouseOut,
-    children,
-    onClick,
-    notLink,
-    style,
-  }) => {
-    const isActive = pathname === navLink;
-    return (
-      <li className="pb-5 lg:pb-0 flex">
-        {notLink ? (
-          <span
-            style={style}
-            onMouseOver={onMouseOver}
-            onMouseOut={onMouseOut}
-            onClick={onClick}
-            className={
-              smallClassName
-                ? smallClassName
-                : `flex justify-center items-center gap-1 relative text-xl  text-gray-700 font-bold cursor-pointer transition-all duration-100 capitalize  lg:text-sm  ${
-                    isActive ? 'text-[var(--primary-color)]' : ''
-                  } ${className || ''}`
-            }
-          >
-            {children}
-          </span>
-        ) : (
-          <Link
-            href={navLink}
-            style={style}
-            onMouseOver={onMouseOver}
-            onMouseOut={onMouseOut}
-            onClick={onClick}
-            className={
-              smallClassName
-                ? smallClassName
-                : `flex justify-center items-center gap-1 relative text-xl  text-gray-700 font-bold cursor-pointer transition-all duration-100 capitalize  lg:text-sm hover:text-[var(--primary-color)]  ${
-                    isActive ? 'text-blue-500' : ''
-                  } ${className || ''}`
-            }
-          >
-            {children}
-          </Link>
-        )}
-      </li>
-    );
-  };
-
   return (
     <>
       <div
-        // initial={{ y: -50, opacity: 0 }}
-        // animate={{ y: 0, opacity: 1 }}
-        // transition={{ delay: 0.2, type: 'spring' }}
-        className="mx-auto transition-all bg-white/60 w-full h-20 relative top-0 border-b border-gray-200 z-50"
+        className="mx-auto transition-all bg-white/60 w-full h-20 relative top-0 border-b border-gray-200 z-50 "
         ref={navBarFix}
       >
         <nav className="relative flex justify-between items-center px-4 md:px-12 py-4 max-w-7xl bg-white/60 w-full h-20 m-auto lg:py-2.5">
@@ -174,6 +144,7 @@ const Navbar: React.FC = () => {
                 navLink="#"
                 onMouseOver={() => setIsServicesHovered(true)}
                 onMouseOut={() => setIsServicesHovered(false)}
+                notLink
               >
                 services{' '}
                 <FaChevronDown
@@ -184,6 +155,12 @@ const Navbar: React.FC = () => {
                       : 'transition-all'
                   }
                 />
+                {isServicesHovered && (
+                  <DropDowns
+                    subMenuArr={navSubServicesArr}
+                    setIsNavOpen={setIsNavOpen}
+                  />
+                )}
               </ListItem>
               <ListItem navLink="/pricing" onClick={scrollToTop}>
                 pricing

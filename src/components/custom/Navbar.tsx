@@ -14,6 +14,7 @@ import { RiCloseFill, RiMenu3Fill } from 'react-icons/ri';
 import OutsideClickHandler from 'react-outside-click-handler';
 import { usePathname } from 'next/navigation';
 import Button from '../common/Button';
+import DropDowns from '../common/DropDowns';
 
 interface ListItemProps {
   className?: string;
@@ -25,15 +26,6 @@ interface ListItemProps {
   onClick?: () => void;
   style?: CSSProperties;
   notLink?: boolean;
-}
-
-interface DropDownProps {
-  title: string;
-  p: string;
-  src: string;
-  to?: string;
-  className?: string;
-  imgClassName?: string;
 }
 
 const Navbar: React.FC = () => {
@@ -50,13 +42,13 @@ const Navbar: React.FC = () => {
     {
       title: 'Case Studies',
       p: 'A peek behind the curtain at how we take digital experiences to the next level.',
-      to: '',
+      to: '/case-tudies',
       src: '/images/nav-work/svg-image-5.svg',
     },
     {
       title: 'Testimonials',
       p: 'Hear from the entrepreneurs we’ve worked with and see how we’ve helped bring over 100 products to life.',
-      top: '',
+      top: '/testimonials',
       src: '/images/nav-work/svg-image-6.svg',
     },
   ];
@@ -100,8 +92,8 @@ const Navbar: React.FC = () => {
             className={
               smallClassName
                 ? smallClassName
-                : `flex justify-center items-center gap-1 relative text-xl  text-gray-700 font-bold cursor-pointer transition-all duration-100 capitalize  lg:text-sm hover:text-gray-500  ${
-                    isActive ? 'text-blue-500' : ''
+                : `flex justify-center items-center gap-1 relative text-xl  text-gray-700 font-bold cursor-pointer transition-all duration-100 capitalize  lg:text-sm  ${
+                    isActive ? 'text-[var(--primary-color)]' : ''
                   } ${className || ''}`
             }
           >
@@ -117,7 +109,7 @@ const Navbar: React.FC = () => {
             className={
               smallClassName
                 ? smallClassName
-                : `flex justify-center items-center gap-1 relative text-xl  text-gray-700 font-bold cursor-pointer transition-all duration-100 capitalize  lg:text-sm hover:text-gray-500  ${
+                : `flex justify-center items-center gap-1 relative text-xl  text-gray-700 font-bold cursor-pointer transition-all duration-100 capitalize  lg:text-sm hover:text-[var(--primary-color)]  ${
                     isActive ? 'text-blue-500' : ''
                   } ${className || ''}`
             }
@@ -126,40 +118,6 @@ const Navbar: React.FC = () => {
           </Link>
         )}
       </li>
-    );
-  };
-
-  const DropDown: React.FC<DropDownProps> = ({
-    title,
-    p,
-    src,
-    to = '#',
-    className,
-    imgClassName,
-  }) => {
-    const isActive = pathname === to;
-    return (
-      <Link
-        href={to}
-        className={`relative flex gap-1 justify-start items-center w-xs rounded-md z-30 ${
-          className || ''
-        }`}
-        onClick={() => setIsNavOpen(false)}
-      >
-        {src && (
-          <Image
-            src={src}
-            alt={title || ''}
-            width={65}
-            height={65}
-            className={`p-3 rounded ${imgClassName}`}
-          />
-        )}
-        <div className="grid w-full">
-          <h5 className="capitalize text-2xl font-bold w-full">{title}</h5>
-          <p>{p}</p>
-        </div>
-      </Link>
     );
   };
 
@@ -205,14 +163,12 @@ const Navbar: React.FC = () => {
                       : 'transition-all'
                   }
                 />
-                {/* {isWorkHovered && */}
-                {
-                  <div className="absolute top-40 flex items-start bg-white rounded-2xl px-2 py-4 flex-1 shadow-2xl ">
-                    {navSubWorkArr.map(({ title, p, src, to }, idx) => (
-                      <DropDown to={to} src={src} title={title} p={p} />
-                    ))}
-                  </div>
-                }
+                {isWorkHovered && (
+                  <DropDowns
+                    subMenuArr={navSubWorkArr}
+                    setIsNavOpen={setIsNavOpen}
+                  />
+                )}
               </ListItem>
               <ListItem
                 navLink="#"

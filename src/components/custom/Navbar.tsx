@@ -2,14 +2,7 @@
 
 import Link from 'next/link';
 import Image from 'next/image';
-import React, {
-  useEffect,
-  useRef,
-  useState,
-  CSSProperties,
-  ReactNode,
-  Suspense,
-} from 'react';
+import React, { useEffect, useRef, useState, Suspense } from 'react';
 import { FaChevronDown } from 'react-icons/fa';
 import { RiCloseFill, RiMenu3Fill } from 'react-icons/ri';
 import OutsideClickHandler from 'react-outside-click-handler';

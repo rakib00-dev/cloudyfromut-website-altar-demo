@@ -14,16 +14,16 @@ import { FaChevronDown } from 'react-icons/fa';
 import { RiCloseFill, RiMenu3Fill } from 'react-icons/ri';
 import OutsideClickHandler from 'react-outside-click-handler';
 import Button from '../common/Button';
-import DropDowns from '../common/DropDowns';
 import ListItem from '../common/ListItem';
 import Loading from '../common/Loading';
+import { DesktopDropDowns, MobileDropDowns } from '../common/DropDowns';
 
 const Navbar: React.FC = () => {
   const scrollToTop = () => window.scrollTo(0, 0);
 
   const [isHovered, setIsHovered] = useState(false);
   const [isWorkHovered, setIsWorkHovered] = useState(false);
-  const [isServicesHovered, setIsServicesHovered] = useState(true);
+  const [isServicesHovered, setIsServicesHovered] = useState(false);
   const [isResourceHovered, setIsResourceHovered] = useState(false);
   const [isNavOpen, setIsNavOpen] = useState(false);
   const navSubWorkArr = [
@@ -152,7 +152,7 @@ const Navbar: React.FC = () => {
                 />
                 {isWorkHovered && (
                   <Suspense fallback={<Loading />}>
-                    <DropDowns
+                    <DesktopDropDowns
                       subMenuArr={navSubWorkArr}
                       setIsNavOpen={setIsNavOpen}
                     />
@@ -176,7 +176,7 @@ const Navbar: React.FC = () => {
                 />
                 {isServicesHovered && (
                   <Suspense fallback={<Loading />}>
-                    <DropDowns
+                    <DesktopDropDowns
                       subMenuArr={navSubServicesArr}
                       setIsNavOpen={setIsNavOpen}
                     />
@@ -209,7 +209,7 @@ const Navbar: React.FC = () => {
                 />
                 {isResourceHovered && (
                   <Suspense fallback={<Loading />}>
-                    <DropDowns
+                    <DesktopDropDowns
                       subMenuArr={navSubResourcesArr}
                       setIsNavOpen={setIsNavOpen}
                       className="mr-35"
@@ -242,13 +242,13 @@ const Navbar: React.FC = () => {
       <OutsideClickHandler onOutsideClick={() => setIsNavOpen(false)}>
         {/* {isNavOpen && ( */}
         <div
-          className={`fixed transition-all duration-300 flex flex-col w-full pb-10 h-full pl-5 md:px-10 pt-5 gap-10 bg-white overflow-y-auto lg:hidden z-20 ${
+          className={`fixed transition-all duration-300 flex flex-col w-full pb-10 h-full pl-5 md:px-10 pt-5 gap-10 bg-white overflow-y-auto lg:hidden z-50 ${
             isNavOpen ? 'top-20' : '-top-[200%]'
           }`}
         >
           <div className="absolute inset-0 bg-white/40 backdrop-blur-sm -z-10" />
 
-          <ul className="flex flex-col leading-6 mr-4 overflow-x-auto mb-10">
+          <ul className="flex flex-col leading-6 mr-4 overflow-x-auto w-full mb-10">
             <ListItem
               className="w-full"
               navLink=""
@@ -267,6 +267,14 @@ const Navbar: React.FC = () => {
                 }
               />
             </ListItem>
+            {isWorkHovered && (
+              <Suspense fallback={<Loading />}>
+                <MobileDropDowns
+                  subMenuArr={navSubWorkArr}
+                  setIsNavOpen={setIsNavOpen}
+                />
+              </Suspense>
+            )}
 
             <ListItem
               className="w-full"
@@ -288,6 +296,14 @@ const Navbar: React.FC = () => {
                 }
               />
             </ListItem>
+            {isServicesHovered && (
+              <Suspense fallback={<Loading />}>
+                <MobileDropDowns
+                  subMenuArr={navSubServicesArr}
+                  setIsNavOpen={setIsNavOpen}
+                />
+              </Suspense>
+            )}
 
             <ListItem navLink="#" onClick={() => setIsNavOpen(false)}>
               pricing
@@ -319,6 +335,15 @@ const Navbar: React.FC = () => {
                 }
               />
             </ListItem>
+            {isResourceHovered && (
+              <Suspense fallback={<Loading />}>
+                <MobileDropDowns
+                  subMenuArr={navSubServicesArr}
+                  setIsNavOpen={setIsNavOpen}
+                />
+              </Suspense>
+            )}
+
             <div className="grid place-items-end">
               <Button text="book a call" className="grid py-2" />
             </div>

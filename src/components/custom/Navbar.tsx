@@ -14,7 +14,7 @@ import { DesktopDropDowns, MobileDropDowns } from '../common/DropDowns';
 const Navbar: React.FC = () => {
   const scrollToTop = () => window.scrollTo(0, 0);
 
-  const [isHovered, setIsHovered] = useState(false);
+  // const [isHovered, setIsHovered] = useState(false);
   const [isWorkHovered, setIsWorkHovered] = useState(false);
   const [isServicesHovered, setIsServicesHovered] = useState(false);
   const [isResourceHovered, setIsResourceHovered] = useState(false);

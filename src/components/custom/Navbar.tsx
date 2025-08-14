@@ -16,11 +16,13 @@ import {
   navSubServicesArr,
   navSubWorkArr,
 } from '@/utils/navSubMenus';
+import { useParams } from 'next/navigation';
 
 const Navbar: React.FC = () => {
   const scrollToTop = () => window.scrollTo(0, 0);
 
   // const [isHovered, setIsHovered] = useState(false);
+
   const [isWorkHovered, setIsWorkHovered] = useState(false);
   const [isServicesHovered, setIsServicesHovered] = useState(false);
   const [isResourceHovered, setIsResourceHovered] = useState(false);
@@ -67,7 +69,7 @@ const Navbar: React.FC = () => {
           <div className="hidden lg:flex justify-end items-center">
             <ul className="flex justify-end mx-auto items-center gap-5">
               <ListItem
-                navLink="#"
+                href="#"
                 onMouseOver={() => setIsWorkHovered(true)}
                 onMouseOut={() => setIsWorkHovered(false)}
                 notLink
@@ -91,7 +93,7 @@ const Navbar: React.FC = () => {
                 )}
               </ListItem>
               <ListItem
-                navLink="#"
+                href="#"
                 onMouseOver={() => setIsServicesHovered(true)}
                 onMouseOut={() => setIsServicesHovered(false)}
                 notLink
@@ -114,17 +116,17 @@ const Navbar: React.FC = () => {
                   </Suspense>
                 )}
               </ListItem>
-              <ListItem navLink="/pricing" onClick={scrollToTop}>
+              <ListItem href="/pricing" onClick={scrollToTop}>
                 pricing
               </ListItem>
-              <ListItem navLink="#" onClick={scrollToTop}>
+              <ListItem href="#" onClick={scrollToTop}>
                 about us
               </ListItem>
-              <ListItem navLink="#" onClick={scrollToTop}>
+              <ListItem href="#" onClick={scrollToTop}>
                 careers
               </ListItem>
               <ListItem
-                navLink="#"
+                href="#"
                 onMouseOver={() => setIsResourceHovered(true)}
                 onMouseOut={() => setIsResourceHovered(false)}
                 notLink
@@ -182,7 +184,7 @@ const Navbar: React.FC = () => {
           <ul className="flex flex-col leading-6 mr-4 overflow-x-auto w-full mb-10">
             <ListItem
               className="w-full"
-              navLink=""
+              href=""
               style={{ justifyContent: 'space-between' }}
               onClick={() => {
                 setIsWorkHovered((prev) => !prev);
@@ -209,7 +211,7 @@ const Navbar: React.FC = () => {
 
             <ListItem
               className="w-full"
-              navLink=""
+              href=""
               style={{ justifyContent: 'space-between' }}
               onClick={() => {
                 setIsServicesHovered((prev) => !prev);
@@ -236,21 +238,21 @@ const Navbar: React.FC = () => {
               </Suspense>
             )}
 
-            <ListItem navLink="#" onClick={() => setIsNavOpen(false)}>
+            <ListItem href="#" onClick={() => setIsNavOpen(false)}>
               pricing
             </ListItem>
-            <ListItem navLink="#" onClick={() => setIsNavOpen(false)}>
+            <ListItem href="#" onClick={() => setIsNavOpen(false)}>
               about us
             </ListItem>
-            <ListItem navLink="#" onClick={() => setIsNavOpen(false)}>
+            <ListItem href="#" onClick={() => setIsNavOpen(false)}>
               careers
             </ListItem>
-            <ListItem navLink="#" onClick={() => setIsNavOpen(false)}>
+            <ListItem href="#" onClick={() => setIsNavOpen(false)}>
               Tech
             </ListItem>
             <ListItem
               className="w-full"
-              navLink=""
+              href=""
               style={{ justifyContent: 'space-between' }}
               onClick={() => {
                 setIsResourceHovered((prev) => !prev);

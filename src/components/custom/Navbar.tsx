@@ -3,13 +3,19 @@
 import Link from 'next/link';
 import Image from 'next/image';
 import React, { useEffect, useRef, useState, Suspense } from 'react';
+import OutsideClickHandler from 'react-outside-click-handler';
 import { FaChevronDown } from 'react-icons/fa';
 import { RiCloseFill, RiMenu3Fill } from 'react-icons/ri';
-import OutsideClickHandler from 'react-outside-click-handler';
+
 import Button from '../common/Button';
 import ListItem from '../common/ListItem';
 import Loading from '../common/Loading';
 import { DesktopDropDowns, MobileDropDowns } from '../common/DropDowns';
+import {
+  navSubResourcesArr,
+  navSubServicesArr,
+  navSubWorkArr,
+} from '@/utils/navSubMenus';
 
 const Navbar: React.FC = () => {
   const scrollToTop = () => window.scrollTo(0, 0);
@@ -19,74 +25,6 @@ const Navbar: React.FC = () => {
   const [isServicesHovered, setIsServicesHovered] = useState(false);
   const [isResourceHovered, setIsResourceHovered] = useState(false);
   const [isNavOpen, setIsNavOpen] = useState(false);
-  const navSubWorkArr = [
-    {
-      title: 'Case Studies',
-      p: 'A peek behind the curtain at how we take digital experiences to the next level.',
-      to: '/case-tudies',
-      src: '/images/nav-work/svg-image-5.svg',
-    },
-    {
-      title: 'Testimonials',
-      p: 'Hear from the entrepreneurs we’ve worked with and see how we’ve helped bring over 100 products to life.',
-      top: '/testimonials',
-      src: '/images/nav-work/svg-image-6.svg',
-    },
-  ];
-
-  const navSubServicesArr = [
-    {
-      title: 'Product Scope',
-      p: '15-day process to align the product with your business goals.',
-      to: '/product-scope',
-      src: '/images/home-services/svg-image-14.svg',
-    },
-    {
-      title: 'AI Development & Enablement',
-      p: 'We leverage ML and Generative AI strategically to ensure your business is future-ready',
-      to: '/ai-development-&-enablement',
-      src: '/images/home-services/svg-image-15.svg',
-    },
-    {
-      title: 'MVP Builder',
-      p: 'Go to market quickly with a high-quality Minimum Viable Product.',
-      to: '/mvp-builder',
-      src: '/images/home-services/svg-image-16.svg',
-    },
-    {
-      title: 'Custom Software Development',
-      p: 'Lean frameworks applied to your vision to create an innovative custom software solution',
-      to: '/custom-software-development',
-      src: '/images/home-services/svg-image-17.svg',
-    },
-    {
-      title: 'UX / UI',
-      p: 'Design an easy-to-use engaging and functional product.',
-      to: '/ux-/-ui',
-      src: '/images/home-services/svg-image-18.svg',
-    },
-    {
-      title: 'Dedicated Teams',
-      p: 'Build your product with a dedicated team of developers.',
-      to: '/dedicated-teams',
-      src: '/images/home-services/svg-image-19.svg',
-    },
-  ];
-
-  const navSubResourcesArr = [
-    {
-      title: 'Blog',
-      p: 'Startup advice to building high-quality products — distilled from years of experience to guide your journey.',
-      to: '/blog',
-      src: '/images/nav-resources/svg-image-13.svg',
-    },
-    {
-      title: 'Podcast',
-      p: 'Top founders and experts unpack the early startup journey — from building the product to finding product-market fit.',
-      to: '/podcast',
-      src: '/images/nav-resources/svg-image-14.svg',
-    },
-  ];
 
   const navBarFix = useRef<HTMLDivElement>(null);
 

@@ -94,7 +94,7 @@ export default function Hero() {
           </DropdownMenu>
         </div>
         {/* {selectedOption && ( */}
-        {true && <HomePriceCalculator />}
+        {selectedOption && selectedOption.length > 4 && <HomePriceCalculator />}
       </div>
     </section>
   );

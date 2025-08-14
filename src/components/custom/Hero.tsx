@@ -13,18 +13,47 @@ import {
   DropdownMenuTrigger,
 } from '@/components/ui/dropdown-menu';
 import { GoTriangleDown } from 'react-icons/go';
+import HomePriceCalculator from './HomePriceCalculator';
 
 export default function Hero() {
-  const [position, setPosition] = React.useState('');
+  const [selectedOption, setSelectedOption] = React.useState('');
 
-  console.log(position);
+  const selectiveDropDowns = [
+    { title: 'Fintech Application', value: 'fintech-application' },
+    { title: 'Data Mining Tool', value: 'data-mining-tool' },
+    { title: 'Open Banking App', value: 'open-banking-app' },
+    { title: 'Marketplace', value: 'marketplace' },
+    { title: 'API', value: 'api' },
+    { title: 'Analytics / BI Dashboard', value: 'analytics-bi-dashboard' },
+    { title: 'Community / Social Network', value: 'community-social-network' },
+    {
+      title: 'Artificial Intelligence Application',
+      value: 'artificial-intelligence-application',
+    },
+    { title: 'AI on the edge', value: 'ai-on-the-edge' },
+    { title: 'Music & Entertainment App', value: 'music-entertainment-app' },
+    { title: 'Regtech Software', value: 'regtech-software' },
+    {
+      title: 'System Integration Project',
+      value: 'system-integration-project',
+    },
+    { title: 'Blockchain App', value: 'blockchain-app' },
+    { title: 'Lifestyle App', value: 'lifestyle-app' },
+    { title: 'Health & Fitness App', value: 'health-fitness-app' },
+    { title: 'Travel App', value: 'travel-app' },
+    { title: 'Sports App', value: 'sports-app' },
+  ];
+
+  console.log(selectedOption);
 
   return (
     <section className="relative max-w-7xl mx-auto w-full overflow-hidden">
       <div className="w-full px-6 md:px-12 grid gap-5 py-20 md:py-30 md:mb-20">
-        <h1 className="text-5xl md:text-6xl font-extrabold py-4 w-full md:w-[45rem] mx-auto md:text-start">
-          Pick your type of project.
-        </h1>
+        {!selectedOption && (
+          <h1 className="text-5xl md:text-6xl font-extrabold py-4 w-full md:w-[45rem] mx-auto md:text-start">
+            Pick your type of project.
+          </h1>
+        )}
 
         <div className="flex justify-center w-full">
           <DropdownMenu>
@@ -36,7 +65,9 @@ export default function Hero() {
                 variant="outline"
                 className="flex text-md py-6 text-gray-500 justify-between border-blue-300 border"
               >
-                {position ? `${position}` : 'Pick your type of project here'}
+                {selectedOption
+                  ? `${selectedOption}`
+                  : 'Pick your type of project here'}
                 <GoTriangleDown className="fill-blue-500 " />
               </Button>
             </DropdownMenuTrigger>
@@ -46,65 +77,24 @@ export default function Hero() {
               </DropdownMenuLabel>
               <DropdownMenuSeparator />
               <DropdownMenuRadioGroup
-                value={position}
-                onValueChange={setPosition}
+                value={selectedOption}
+                onValueChange={setSelectedOption}
               >
-                <DropdownMenuRadioItem value="pick-your-type-of-project-here">
-                  Pick your type of project here
-                </DropdownMenuRadioItem>
-                <DropdownMenuRadioItem value="fintech-application">
-                  Fintech Application
-                </DropdownMenuRadioItem>
-                <DropdownMenuRadioItem value="data-mining-tool">
-                  Data Mining Tool
-                </DropdownMenuRadioItem>
-                <DropdownMenuRadioItem value="open-banking-app">
-                  Open Banking App
-                </DropdownMenuRadioItem>
-                <DropdownMenuRadioItem value="marketplace">
-                  Marketplace
-                </DropdownMenuRadioItem>
-                <DropdownMenuRadioItem value="api">API</DropdownMenuRadioItem>
-                <DropdownMenuRadioItem value="analytics-bi-dashboard">
-                  Analytics / BI Dashboard
-                </DropdownMenuRadioItem>
-                <DropdownMenuRadioItem value="community-social-network">
-                  Community / Social Network
-                </DropdownMenuRadioItem>
-                <DropdownMenuRadioItem value="artificial-intelligence-application">
-                  Artificial Intelligence Application
-                </DropdownMenuRadioItem>
-                <DropdownMenuRadioItem value="ai-on-the-edge">
-                  AI on the edge
-                </DropdownMenuRadioItem>
-                <DropdownMenuRadioItem value="music-entertainment-app">
-                  Music & Entertainment App
-                </DropdownMenuRadioItem>
-                <DropdownMenuRadioItem value="regtech-software">
-                  Regtech Software
-                </DropdownMenuRadioItem>
-                <DropdownMenuRadioItem value="system-integration-project">
-                  System Integration Project
-                </DropdownMenuRadioItem>
-                <DropdownMenuRadioItem value="blockchain-app">
-                  Blockchain App
-                </DropdownMenuRadioItem>
-                <DropdownMenuRadioItem value="lifestyle-app">
-                  Lifestyle App
-                </DropdownMenuRadioItem>
-                <DropdownMenuRadioItem value="health-fitness-app">
-                  Health & Fitness App
-                </DropdownMenuRadioItem>
-                <DropdownMenuRadioItem value="travel-app">
-                  Travel App
-                </DropdownMenuRadioItem>
-                <DropdownMenuRadioItem value="sports-app">
-                  Sports App
-                </DropdownMenuRadioItem>
+                {selectiveDropDowns.map(({ title, value }) => (
+                  <DropdownMenuRadioItem
+                    key={value}
+                    value={value}
+                    // onClick={() => setSelectedOption(title)}
+                  >
+                    {title}
+                  </DropdownMenuRadioItem>
+                ))}
               </DropdownMenuRadioGroup>
             </DropdownMenuContent>
           </DropdownMenu>
         </div>
+        {/* {selectedOption && ( */}
+        {true && <HomePriceCalculator />}
       </div>
     </section>
   );
